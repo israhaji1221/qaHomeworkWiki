@@ -65,14 +65,16 @@ describe("Employee Manager 1.2", () => {
             "Bernice Ortiz"
             )
         );
+
+        // why do we have an "expect" in the homework but not in the solution?
         expect(
             await (await driver.findElement(nameInput)).getAttribute("value")
         ).toBe("Bernice Ortiz");
         });
-
+        
         test("A canceled change doesn't persist", async () => {
             /*
-            This test follows these steps:
+            This test follows these steps:3
             1. Open Phillip Weaver
             2. Edit the name input
             3. Click cancel
@@ -152,21 +154,30 @@ describe("Employee Manager 1.2", () => {
             5. Cancel the change
             6. Verify the error is gone
             */
+            
+            // Finding Bernice and waiting for her card to show up.
             await driver.findElement(bernice).click();
             await driver.wait(
                 until.elementIsVisible(await driver.findElement(nameInput))
             );
+
+            // Clearing Bernice, clicking space then back_space. 
             await driver.findElement(nameInput).clear();
             await driver.findElement(nameInput).sendKeys(Key.SPACE, Key.BACK_SPACE);
             await driver.findElement(saveButton).click();
+
+            // Locating the errorCard, verifying the errorCard is present. 
             await driver.wait(until.elementLocated(errorCard));
             expect(await (await driver.findElement(errorCard)).getText()).toBe(
                 "The name field must be between 1 and 30 characters long."
             );
+
+            // Finding the namecard, clicking space in the namecard, clicking the cancelButton, and then finding the errorCard. 
             await driver.findElement(nameInput).sendKeys(Key.SPACE);
             await driver.findElement(cancelButton).click();
             driver.wait(() => true, 500);
             expect(await driver.findElements(errorCard)).toHaveLength(0);
         });
+
     }); 
 });

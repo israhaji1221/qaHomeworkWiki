@@ -11,26 +11,26 @@ import {Builder,By, Capabilities, until, WebDriver, } from "selenium-webdriver";
         //FILL OUT LOCATORS CONSTRUCTOR AND METHODS IN ORDER TO PASS THE TEST
   }
 
-  describe("Employee Manger Test", () => {
+  describe("Employee Manager Test", () => {
       beforeEach(async () => {
-          await employeePage.navigate();
+          await employeePage.Navigate();
       })
       afterAll(async () => {
           await driver.quit()
       })
       test("adding an employee", async () => {
-          await driver.wait(until.elementLocated(emPage.header))
-          await driver.findElement(emPage.addEmployee).click()
-          await driver.findElement(emPage.newEmployee).click()
-          await driver.findElement(emPage.nameInput).click()
-          await driver.findElement(emPage.nameInput).clear()
-          await driver.findElement(emPage.nameInput).sendKeys("Change this")
-          await driver.findElement(emPage.phoneInput).click()
-          await driver.findElement(emPage.phoneInput).clear()
-          await driver.findElement(emPage.phoneInput).sendKeys("Change this")
-          await driver.findElement(emPage.titleInput).click()
-          await driver.findElement(emPage.titleInput).clear()
-          await driver.findElement(emPage.titleInput).sendKeys("Change this")
-  })
+          await driver.wait(until.elementLocated(employeePage.header))
+          await driver.findElement(employeePage.addEmployee).click()
+          await driver.findElement(employeePage.newEmployee).click()
+          await driver.findElement(employeePage.nameInput).click()
+          await driver.findElement(employeePage.nameInput).clear()
+          await driver.findElement(employeePage.nameInput).sendKeys("Change this")
+          await driver.findElement(employeePage.phoneInput).click()
+          await driver.findElement(employeePage.phoneInput).clear()
+          await driver.findElement(employeePage.phoneInput).sendKeys("Change this")
+          await driver.findElement(employeePage.titleInput).click()
+          await driver.findElement(employeePage.titleInput).clear()
+          await driver.findElement(employeePage.titleInput).sendKeys("Change this")
+  });
 
   /* this is a commment */

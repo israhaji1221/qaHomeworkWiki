@@ -26,7 +26,7 @@ import {Builder,By, Capabilities, until, WebDriver, } from "selenium-webdriver";
         return (await this.driver.findElement(elementBy)).click();
     };
     async sendKeys(elementBy: By, Key: any) {
-        await this.driver.wait(until.elementLocated(elementBy)); 
+        await this.driver.wait(until.elementLocated(elementBy)).clear(); 
         return this.driver.findElement(elementBy).sendKeys(Key); 
     };
     async getText(elementBy: By) {
@@ -48,18 +48,12 @@ const emPage = new employeePage(driver)
       });
 
       test("adding an employee", async () => {
-          await driver.wait(until.elementLocated(employeePage.header));
-          await driver.findElement(employeePage.addEmployee).click();
-          await driver.findElement(employeePage.newEmployee).click();
-          await driver.findElement(employeePage.nameInput).click();
-          await driver.findElement(employeePage.nameInput).clear();
-          await driver.findElement(employeePage.nameInput).sendKeys("Bob the Builder");
-          await driver.findElement(employeePage.phoneInput).click();
-          await driver.findElement(employeePage.phoneInput).clear();
-          await driver.findElement(employeePage.phoneInput).sendKeys("8018000000");
-          await driver.findElement(employeePage.titleInput).click();
-          await driver.findElement(employeePage.titleInput).clear();
-          await driver.findElement(employeePage.titleInput).sendKeys("The Fixer");
-    })
+          await emPage.click(emPage.addEmployee);
+          await emPage.click(emPage.newEmployee); 
+          await emPage.sendKeys(emPage.nameInput, 'John Doe'); 
+          await emPage.sendKeys(emPage.phoneInput, 8008675309);
+          await emPage.sendKeys(emPage.titileInput, 'CEO of CEOs');
+          await emPage.click(emPage.saveBtn); 
+        })
     })
   /* this is a commment */

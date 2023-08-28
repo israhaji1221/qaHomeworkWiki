@@ -57,5 +57,5 @@ describe("Practicing Page Object Models", () => {
         await emPage.driver.findElement(emPage.titileInput).clear();
         await emPage.sendKeys(emPage.titileInput, 'The Fixer');
         await emPage.click(emPage.saveBtn);
-    })
+    });
 })
